@@ -15,28 +15,86 @@ public class Hirdetesek
 {
     @Id
     @GeneratedValue()
-    int id;
+    private int id;
     
     @Column(nullable = false)
-    String nev;
+    private String nev;
     
     @Column(nullable = false)
-    String leiras;
+    private String leiras;
     
     @Column(nullable = false)
-    LocalDate date;  
+    private LocalDate date;  
     
     @Column(nullable = false)
-    String hely;
+    private String hely;
     
     @Enumerated(EnumType.STRING)
-    Csomagkuldes csomagkuldes;
+    private Csomagkuldes csomagkuldes;
     
     @Column(nullable = false)
-    int ar;
+    private int ar;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNev() {
+        return nev;
+    }
+
+    public void setNev(String nev) {
+        this.nev = nev;
+    }
+
+    public String getLeiras() {
+        return leiras;
+    }
+
+    public void setLeiras(String leiras) {
+        this.leiras = leiras;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public String getHely() {
+        return hely;
+    }
+
+    public void setHely(String hely) {
+        this.hely = hely;
+    }
+
+    public Csomagkuldes getCsomagkuldes() {
+        return csomagkuldes;
+    }
+
+    public void setCsomagkuldes(Csomagkuldes csomagkuldes) {
+        this.csomagkuldes = csomagkuldes;
+    }
+
+    public int getAr() {
+        return ar;
+    }
+
+    public void setAr(int ar) {
+        this.ar = ar;
+    }
 
     public enum Csomagkuldes {
         IGEN, NEM;
     }
+    
+    
     
 }
