@@ -30,11 +30,12 @@ public class MainApp extends Application{
         try {
             startDatabase();
             System.out.println("Running...");
+            launch(args);
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         
-        launch(args);
+        
     }
     
     

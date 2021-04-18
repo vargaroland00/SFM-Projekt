@@ -117,7 +117,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Button layoutX="529.0" layoutY="560.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
+            <Button fx:id="hirdetesFeladasaButton" layoutX="529.0" layoutY="560.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

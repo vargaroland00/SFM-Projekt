@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "hirdetesek")
+@Table(name = "Hirdetesek")
 public class Hirdetesek 
 {
     @Id
@@ -37,10 +37,6 @@ public class Hirdetesek
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNev() {
