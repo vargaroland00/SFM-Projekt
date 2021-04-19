@@ -69,7 +69,7 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
             hirdetes.setNev(hirdetesneveTextField.getText());
             hirdetes.setLeiras(leirasTextArea.getText());
             hirdetes.setHely(varosTextField.getText());
-            hirdetes.setDate(LocalDate.now());
+            hirdetes.setFeladasideje(LocalDate.now());
             hirdetes.setAr(Integer.parseInt(arTextField.getText()));
                 
             if (csomagkuldesCheckBox.isSelected())
