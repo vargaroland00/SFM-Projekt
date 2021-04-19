@@ -5,6 +5,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -101,7 +103,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="hirdetesFeladasaButton" layoutX="533.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
+                  <Button fx:id="hirdetesFeladasaButton" layoutX="585.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -109,6 +111,15 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+                  <TableView fx:id="hirdetesekTable" layoutX="177.0" layoutY="78.0" prefHeight="499.0" prefWidth="1031.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
+                    <columns>
+                        <TableColumn fx:id="kepHirdetesekColumn" prefWidth="162.0" style="-fx-alignment: CENTER;" text="Kép" />
+                      <TableColumn fx:id="nevHirdetesekColumn" prefWidth="462.0" style="-fx-alignment: CENTER;" text="Hirdetés neve" />
+                      <TableColumn fx:id="helyHirdetesekColumn" minWidth="0.0" prefWidth="140.0" style="-fx-alignment: CENTER;" text="Hely" />
+                        <TableColumn fx:id="feladasidejeHirdetesekColumn" prefWidth="127.0" style="-fx-alignment: CENTER;" text="Feladás ideje" />
+                        <TableColumn fx:id="eladoHirdetesekColumn" minWidth="0.0" prefWidth="139.0" style="-fx-alignment: CENTER;" text="Eladó neve" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
          </center></BorderPane>

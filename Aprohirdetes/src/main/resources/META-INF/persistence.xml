@@ -10,7 +10,7 @@
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/> <!-- create: mindig új adatbázist generál; validate: ha létezik a db akkor elindul az alkalmazás, ha nem akkor hibára fut; update: ha már létezik akkor frissíti, ha nem akkor létrehozza  -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create: mindig új adatbázist generál; validate: ha létezik a db akkor elindul az alkalmazás, ha nem akkor hibára fut; update: ha már létezik akkor frissíti, ha nem akkor létrehozza  -->
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:file:~/db_aprohirdetes"/> <!-- Adatbázis típusa: fájl, mentési lokáció: Home/fájl_neve -->
             <property name="javax.persistence.jdbc.user" value="hirdetesek"/> <!-- felhasználó név az adatbázis kezeléséhez  -->

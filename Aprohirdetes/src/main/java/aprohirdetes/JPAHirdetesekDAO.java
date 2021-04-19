@@ -2,6 +2,7 @@ package aprohirdetes;
 
 import Model.Hirdetesek;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -34,9 +35,9 @@ public class JPAHirdetesekDAO implements HirdetesekDAO
     @Override
     public List<Hirdetesek> getHirdetesek() {
         TypedQuery<Hirdetesek> query = entityManager.createQuery("SELECT hirdetes FROM Hirdetesek hirdetes", Hirdetesek.class);
-        List<Hirdetesek> animals = query.getResultList();
+        List<Hirdetesek> hirdetesek = query.getResultList();
         
-        return animals;
+        return hirdetesek;
     }
 
     @Override
@@ -44,5 +45,5 @@ public class JPAHirdetesekDAO implements HirdetesekDAO
         entityManager.close();
         entityManagerFactory.close();
     }
-    
+
 }

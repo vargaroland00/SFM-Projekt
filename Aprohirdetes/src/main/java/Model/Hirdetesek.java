@@ -24,7 +24,7 @@ public class Hirdetesek
     private String leiras;
     
     @Column(nullable = false)
-    private LocalDate date;  
+    private LocalDate feladasideje;  
     
     @Column(nullable = false)
     private String hely;
@@ -55,12 +55,12 @@ public class Hirdetesek
         this.leiras = leiras;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getFeladasideje() {
+        return feladasideje;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setFeladasideje(LocalDate date) {
+        this.feladasideje = date;
     }
 
     public String getHely() {
