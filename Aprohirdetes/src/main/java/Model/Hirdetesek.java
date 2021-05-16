@@ -20,7 +20,7 @@ public class Hirdetesek
     @Column(nullable = false)
     private String nev;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 5000)
     private String leiras;
     
     @Column(nullable = false)
