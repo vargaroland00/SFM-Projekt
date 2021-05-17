@@ -56,8 +56,6 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
     @FXML
     void onHirdetesFeladasaButton() 
     {
-        System.out.println("Kattint..." + kattintasokSzama++);
-        
         boolean mindenHelyesenKitoltve = true; //ha valami nincs helyesen kitoltve, akkor falsera vált
         
         mindenHelyesenKitoltve = kitoltesEllenorzes(mindenHelyesenKitoltve);
