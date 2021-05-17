@@ -27,10 +27,10 @@ public class Felhasznalok
     @Column(nullable = false)
     private String salt;
     
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String szamlazasi_cim;
     
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String szallitasi_cim;
 
     public int getId() {
