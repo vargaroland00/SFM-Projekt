@@ -2,6 +2,8 @@ package Model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -32,6 +34,21 @@ public class Felhasznalok
     
     @Column(nullable = true)
     private String szallitasi_cim;
+    
+    @Enumerated(EnumType.STRING)
+    private Jogosultsag jogosultsag;
+
+    public Jogosultsag getJogosultsag() {
+        return jogosultsag;
+    }
+
+    public void setJogosultsag(Jogosultsag jogosultsag) {
+        this.jogosultsag = jogosultsag;
+    }
+    
+    public enum Jogosultsag {
+        ADMIN, FELHASZNALO;
+    }
 
     public int getId() {
         return id;
