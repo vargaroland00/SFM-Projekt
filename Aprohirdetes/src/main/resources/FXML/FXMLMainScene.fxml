@@ -103,7 +103,7 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="hirdetesFeladasaButton" layoutX="585.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
+                  <Button fx:id="hirdetesFeladasaButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" prefHeight="51.0" prefWidth="222.0" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -111,7 +111,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <TableView fx:id="hirdetesekTable" layoutX="177.0" layoutY="78.0" prefHeight="499.0" prefWidth="1031.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
+                  <TableView fx:id="hirdetesekTable" layoutX="249.0" prefHeight="668.0" prefWidth="1031.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
                     <columns>
                       <TableColumn fx:id="nevHirdetesekColumn" prefWidth="462.0" style="-fx-padding: 10px; -text-alignment: center;" text="Hirdetés neve" />
                         <TableColumn fx:id="arHirdetesekColumn" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Ár" />
