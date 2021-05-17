@@ -143,14 +143,16 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
     void atiranyitasFoablak()
     {
         try {
-        Parent hirdetesFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
+        Parent mainSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
         
-        Scene elozoScene = hirdetesFeladasaButton.getScene();
-        Window window = elozoScene.getWindow();
-        Stage hirdetesFeladasStage = (Stage) window;
-        hirdetesFeladasaButton.getScene().setRoot(hirdetesFeladasRoot);
-        hirdetesFeladasStage.setTitle("Hirdetés feladás");
-        hirdetesFeladasStage.show();
+        Scene hirdetesScene = hirdetesFeladasaButton.getScene();
+        Window window = hirdetesScene.getWindow();
+        
+        Stage MainStage = (Stage) window;
+        hirdetesFeladasaButton.getScene().setRoot(mainSceneRoot);
+        
+        MainStage.setTitle("Hirdetés feladás");
+        MainStage.show();
         
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

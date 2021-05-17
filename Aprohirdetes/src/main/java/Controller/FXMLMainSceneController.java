@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +25,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import javafx.util.Callback;
 
 public class FXMLMainSceneController implements Initializable {
     
@@ -58,10 +56,12 @@ public class FXMLMainSceneController implements Initializable {
         try {
         Parent hirdetesFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLHirdetesFeladasScene.fxml"));
         
-        Scene elozoScene = hirdetesFeladasaButton.getScene();
-        Window window = elozoScene.getWindow();
+        Scene mainScene = hirdetesFeladasaButton.getScene();
+        Window window = mainScene.getWindow();
+        
         Stage hirdetesFeladasStage = (Stage) window;
         hirdetesFeladasaButton.getScene().setRoot(hirdetesFeladasRoot);
+        
         hirdetesFeladasStage.setTitle("Hirdetés feladás");
         hirdetesFeladasStage.show();
         
