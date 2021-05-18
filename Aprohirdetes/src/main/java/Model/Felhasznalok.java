@@ -45,8 +45,15 @@ public class Felhasznalok
         return jogosultsag;
     }
 
-    public void setJogosultsag(Jogosultsag jogosultsag) {
-        this.jogosultsag = jogosultsag;
+    public void setJogosultsag(String jogosultsag) {
+        if (jogosultsag == this.jogosultsag.ADMIN.toString())
+        {
+            this.jogosultsag = this.jogosultsag.ADMIN;
+        }
+        else 
+        {
+           this.jogosultsag = this.jogosultsag.FELHASZNALO;
+        }
     }
 
     public String getTelefonszam() {
