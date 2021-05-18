@@ -7,6 +7,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +36,11 @@ public class Hirdetesek
     
     @Column(nullable = false)
     private int ar;
+    
+    @ManyToOne
+    @JoinColumn(name = "felhasznalo_id", table = "Felhasznalok")
+    @Column(nullable = false)
+    private int elado;
 
     public int getId() {
         return id;
@@ -85,6 +92,14 @@ public class Hirdetesek
 
     public void setAr(int ar) {
         this.ar = ar;
+    }
+
+    public int getElado() {
+        return elado;
+    }
+
+    public void setElado(int elado) {
+        this.elado = elado;
     }
 
     public enum Csomagkuldes {
