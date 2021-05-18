@@ -122,7 +122,7 @@
                   <PasswordField layoutX="168.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
                   <PasswordField layoutX="807.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
                   <PasswordField layoutX="807.0" layoutY="283.0" prefHeight="37.0" prefWidth="290.0" />
-                  <ChoiceBox layoutX="806.0" layoutY="499.0" prefHeight="37.0" prefWidth="170.0" />
+                  <ChoiceBox fx:id="jogosultsagDropdown" layoutX="806.0" layoutY="499.0" prefHeight="37.0" prefWidth="170.0" style="-fx-font-size: 15px;" />
                   <Label layoutX="632.0" layoutY="430.0" text="Telefonszám:">
                      <font>
                         <Font size="24.0" />
@@ -134,7 +134,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nevRegisztracioWarningLabel1" layoutX="851.0" layoutY="466.0" text="Nem adta meg a telefonszámát!" textFill="RED" />
+                  <Label fx:id="telefonszamRegisztracioWarningLabel" layoutX="851.0" layoutY="466.0" text="Nem adta meg a telefonszámát!" textFill="RED" />
                </children>
             </Pane>
          </center>
