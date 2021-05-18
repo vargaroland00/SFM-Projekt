@@ -29,6 +29,9 @@ public class Felhasznalok
     @Column(nullable = false)
     private String salt;
     
+    @Column(nullable = false)
+    private String telefonszam;
+    
     @Column(nullable = true)
     private String szamlazasi_cim;
     
@@ -44,6 +47,14 @@ public class Felhasznalok
 
     public void setJogosultsag(Jogosultsag jogosultsag) {
         this.jogosultsag = jogosultsag;
+    }
+
+    public String getTelefonszam() {
+        return telefonszam;
+    }
+
+    public void setTelefonszam(String telefonszam) {
+        this.telefonszam = telefonszam;
     }
     
     public enum Jogosultsag {
