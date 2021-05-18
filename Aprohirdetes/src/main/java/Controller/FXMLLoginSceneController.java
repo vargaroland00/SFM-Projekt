@@ -1,8 +1,11 @@
 package Controller;
 
+import Model.Felhasznalok;
+import Controller.PasswordHashing;
+import aprohirdetes.JPAFelhasznalokDAO;
+
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -106,14 +109,101 @@ public class FXMLLoginSceneController implements Initializable
     @FXML
     private void onRegisztracioButton() 
     {
+        if (regisztracioKitoltesEllenorzes())
+        {
+            if (foglaltEmail(emailRegisztracioTextbox.getText()) == false)
+            {
+                Felhasznalok felhasznalo = new Felhasznalok();
+                
+                felhasznalo.setEmail(emailRegisztracioTextbox.getText());
+
+                felhasznalo.setSalt((PasswordHashing.generateSalt(jelszoRegisztracioTextbox.getText().length())).toString());
+                felhasznalo.setJelszo((PasswordHashing.hashPassword(jelszoRegisztracioTextbox.getText(), felhasznalo.getSalt())).get());
+
+                felhasznalo.setNev(nevTextbox.getText());
+                felhasznalo.setTelefonszam(telefonszamTextbox.getText());
+                felhasznalo.setJogosultsag(jogosultsagDropdown.getValue());
+                
+                try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+                {
+                    fDAO.saveFelhasznalo(felhasznalo);
+
+                    atiranyitasMainScene(felhasznalo.getId());
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.toString());
+                }
+            }
+        }
+    }
+    
+    private boolean foglaltEmail(String email)
+    {
+        try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+        {
+            List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+            
+            for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+            {
+                if (felhasznalo.getEmail().equals(email))
+                {
+                    return true;
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
         
+        return false;
     }
     
     @FXML
     private void onLoginButton() 
     {
+        if (bejelentkezesKitoltesEllenorzes())
+        {
+            try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+            {
+                List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+
+                for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+                {
+                    if (felhasznalo.getEmail().equals(emailBejelentkezesTextbox.getText()))
+                    {
+                        System.out.println("Található ilyen email cim az adatbazsiban!");
+                        System.out.println("Megfelelo jelszo: " + PasswordHashing.verifyPassword(jelszoBejelentkezesTextbox.getText(), felhasznalo.getJelszo(), felhasznalo.getSalt()));
+                        if (PasswordHashing.verifyPassword(jelszoBejelentkezesTextbox.getText(), felhasznalo.getJelszo(), felhasznalo.getSalt()))
+                        {
+                            System.out.println("Átirányítás -> ......");
+                            atiranyitasMainScene(felhasznalo.getId());
+                        }
+                        else
+                        {
+                            jelszoBejelentkezesWarningLabel.setVisible(true);
+                            jelszoBejelentkezesWarningLabel.setText("Hibás jelszó!");
+                        }
+                    }
+                    else {
+                        emailBejelentkezesWarningLabel.setVisible(true);
+                        emailBejelentkezesWarningLabel.setText("Nem található ilyen email az adatbázisban!");
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                System.out.println(ex.toString());
+            }
+        }
+    }
+    
+    private void atiranyitasMainScene(int felhasznaloID)
+    {
         try 
         {
+            FXMLMainSceneController.bejelentkezoID = felhasznaloID;
             Parent mainFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
 
             Scene loginScene = LoginButton.getScene();
@@ -133,11 +223,11 @@ public class FXMLLoginSceneController implements Initializable
     
     private boolean bejelentkezesKitoltesEllenorzes() 
     {
+        bejelentkezesWarningInitialize();
+        
         boolean mindenHelyesenKitoltve = true;
         
-        String emailRegex = "/^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/";
-        Pattern emailPattern = Pattern.compile(emailRegex);
-        Matcher emailMatcher = emailPattern.matcher(emailBejelentkezesTextbox.getText());
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         
         if (emailBejelentkezesTextbox.getText().isBlank())
         {
@@ -145,7 +235,7 @@ public class FXMLLoginSceneController implements Initializable
             emailBejelentkezesWarningLabel.setText("Nem adta meg az email címet!");
             mindenHelyesenKitoltve = false;
         }
-        else if (!emailMatcher.matches())
+        else if (!emailBejelentkezesTextbox.getText().matches(emailRegex))
         {
             emailBejelentkezesWarningLabel.setVisible(true);
             emailBejelentkezesWarningLabel.setText("Hibás email cím formátum!");
@@ -164,11 +254,11 @@ public class FXMLLoginSceneController implements Initializable
     
     private boolean regisztracioKitoltesEllenorzes() 
     {
+        regisztracioWarningInitialize();
+        
         boolean mindenHelyesenKitoltve = true;
         
-        String emailRegex = "/^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/";
-        Pattern emailPattern = Pattern.compile(emailRegex);
-        Matcher emailMatcher = emailPattern.matcher(emailBejelentkezesTextbox.getText());
+        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
         
         if (emailRegisztracioTextbox.getText().isBlank())
         {
@@ -176,7 +266,7 @@ public class FXMLLoginSceneController implements Initializable
             emailRegisztracioWarningLabel.setText("Nem adta meg az email címet!");
             mindenHelyesenKitoltve = false;
         }
-        else if (!emailMatcher.matches())
+        else if (!emailRegisztracioTextbox.getText().matches(emailRegex))
         {
             emailRegisztracioWarningLabel.setVisible(true);
             emailRegisztracioWarningLabel.setText("Hibás email cím formátum!");
@@ -190,7 +280,7 @@ public class FXMLLoginSceneController implements Initializable
             mindenHelyesenKitoltve = false;
         }
         
-        if (megerositoJelszoTextbox.getText().equals(jelszoRegisztracioTextbox.getText()))
+        if (!megerositoJelszoTextbox.getText().equals(jelszoRegisztracioTextbox.getText()))
         {
             megerositojelszoRegisztracioWarningLabel.setVisible(true);
             megerositojelszoRegisztracioWarningLabel.setText("A jelszavaknak meg kell egyezniük!");

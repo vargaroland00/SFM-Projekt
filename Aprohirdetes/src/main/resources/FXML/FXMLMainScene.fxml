@@ -68,27 +68,14 @@
                               <String fx:value="navbarButton" />
                            </styleClass>
                         </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Bejelentkezés" textFill="WHITE">
-                           <padding>
-                              <Insets bottom="15.0" top="15.0" />
-                           </padding>
+                        <Label fx:id="udvozloLabel" alignment="CENTER" prefHeight="52.0" prefWidth="198.0" text="Üdvözlöm, Példa Példa!" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                            <HBox.margin>
                               <Insets left="400.0" />
                            </HBox.margin>
-                           <styleClass>
-                              <String fx:value="navBarButton" />
-                              <String fx:value="navbarButton" />
-                           </styleClass>
-                        </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Regisztráció" textFill="WHITE">
-                           <padding>
-                              <Insets bottom="15.0" top="15.0" />
-                           </padding>
-                           <styleClass>
-                              <String fx:value="navBarButton" />
-                              <String fx:value="navbarButton" />
-                           </styleClass>
-                        </Button>
+                        </Label>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKilepesButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Kilépés" textFill="WHITE">
                            <styleClass>
                               <String fx:value="navBarButton" />

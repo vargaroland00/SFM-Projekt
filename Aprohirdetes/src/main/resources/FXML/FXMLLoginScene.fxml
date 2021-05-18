@@ -70,7 +70,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="168.0" layoutY="136.0" prefHeight="37.0" prefWidth="290.0" />
+                  <TextField fx:id="emailBejelentkezesTextbox" layoutX="168.0" layoutY="136.0" prefHeight="37.0" prefWidth="290.0" />
                   <Label layoutX="68.0" layoutY="213.0" text="Jelszó:">
                      <font>
                         <Font size="24.0" />
@@ -86,7 +86,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="807.0" layoutY="136.0" prefHeight="37.0" prefWidth="290.0" />
+                  <TextField fx:id="emailRegisztracioTextbox" layoutX="807.0" layoutY="136.0" prefHeight="37.0" prefWidth="290.0" />
                   <Label layoutX="701.0" layoutY="213.0" text="Jelszó:">
                      <font>
                         <Font size="24.0" />
@@ -102,7 +102,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="807.0" layoutY="354.0" prefHeight="37.0" prefWidth="290.0" />
+                  <TextField fx:id="nevTextbox" layoutX="807.0" layoutY="354.0" prefHeight="37.0" prefWidth="290.0" />
                   <Button fx:id="RegisztracioButton" layoutX="776.0" layoutY="585.0" mnemonicParsing="false" onAction="#onRegisztracioButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Regisztráció" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
@@ -119,16 +119,16 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <PasswordField layoutX="168.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
-                  <PasswordField layoutX="807.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
-                  <PasswordField layoutX="807.0" layoutY="283.0" prefHeight="37.0" prefWidth="290.0" />
+                  <PasswordField fx:id="jelszoBejelentkezesTextbox" layoutX="168.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
+                  <PasswordField fx:id="jelszoRegisztracioTextbox" layoutX="807.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
+                  <PasswordField fx:id="megerositoJelszoTextbox" layoutX="807.0" layoutY="283.0" prefHeight="37.0" prefWidth="290.0" />
                   <ChoiceBox fx:id="jogosultsagDropdown" layoutX="806.0" layoutY="499.0" prefHeight="37.0" prefWidth="170.0" style="-fx-font-size: 15px;" />
                   <Label layoutX="632.0" layoutY="430.0" text="Telefonszám:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="851.0" layoutY="429.0" prefHeight="37.0" prefWidth="246.0" />
+                  <TextField fx:id="telefonszamTextbox" layoutX="851.0" layoutY="429.0" prefHeight="37.0" prefWidth="246.0" />
                   <Label layoutX="806.0" layoutY="430.0" text="+36">
                      <font>
                         <Font size="24.0" />

@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Hirdetesek;
 import aprohirdetes.JPAHirdetesekDAO;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -67,6 +68,7 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
             hirdetes.setHely(varosTextField.getText());
             hirdetes.setFeladasideje(LocalDate.now());
             hirdetes.setAr(Integer.parseInt(arTextField.getText()));
+            hirdetes.setElado(FXMLMainSceneController.bejelentkezoID);
                 
             if (csomagkuldesCheckBox.isSelected())
             {

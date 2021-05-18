@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Felhasznalok;
 import Model.Hirdetesek;
+import aprohirdetes.JPAFelhasznalokDAO;
 import aprohirdetes.JPAHirdetesekDAO;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -27,6 +30,11 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class FXMLMainSceneController implements Initializable {
+    
+    public static int bejelentkezoID;
+    
+    @FXML
+    private Label udvozloLabel;
     
     @FXML
     private Button hirdetesFeladasaButton;
@@ -73,6 +81,23 @@ public class FXMLMainSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+        {
+            List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+            
+            for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+            {
+                if (felhasznalo.getId() == bejelentkezoID)
+                {
+                    udvozloLabel.setText("Jó napot, " + felhasznalo.getNev() + "!");
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
+        
         try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
         {
             List<Hirdetesek> hirdetesekDataQuery = hDAO.getHirdetesek();
@@ -106,10 +131,9 @@ public class FXMLMainSceneController implements Initializable {
             
             hirdetesekTable.setItems(hirdetesekTableData);
         } 
-        catch (Exception ex) {
-            
+        catch (Exception ex) 
+        {
             System.out.println(ex.toString());
         }
-        
     }    
 }
