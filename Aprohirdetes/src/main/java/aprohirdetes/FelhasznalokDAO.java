@@ -11,5 +11,5 @@ public interface FelhasznalokDAO extends AutoCloseable
     
     public void updateFelhasznalo(Felhasznalok felhasznalo);
     
-    public List<Felhasznalok> getFelhasznalo();
+    public List<Felhasznalok> getFelhasznalok();
 }

@@ -32,7 +32,7 @@ public class JPAFelhasznalokDAO implements FelhasznalokDAO
     }
 
     @Override
-    public List<Felhasznalok> getFelhasznalo() {
+    public List<Felhasznalok> getFelhasznalok() {
         TypedQuery<Felhasznalok> query = entityManager.createQuery("SELECT felhasznalo FROM Felhasznalo felhasznalo", Felhasznalok.class);
         List<Felhasznalok> felhasznalok = query.getResultList();
         
