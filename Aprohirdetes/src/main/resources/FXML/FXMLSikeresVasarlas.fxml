@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: dodgerblue;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="196.0" layoutY="8.0" text="Értesítés" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="152.0" layoutY="73.0" text="Sikeres vásárlás! " textFill="#00d70b">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="135.0" fitWidth="150.0" layoutX="165.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Style/Checkmark_green.svg.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+   </center>
+</BorderPane>
