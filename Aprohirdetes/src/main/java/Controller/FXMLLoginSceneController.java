@@ -166,6 +166,61 @@ public class FXMLLoginSceneController implements Initializable
     {
         boolean mindenHelyesenKitoltve = true;
         
+        String emailRegex = "/^(([^<>()[\\]\\\\.,;:\\s@\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$/";
+        Pattern emailPattern = Pattern.compile(emailRegex);
+        Matcher emailMatcher = emailPattern.matcher(emailBejelentkezesTextbox.getText());
+        
+        if (emailRegisztracioTextbox.getText().isBlank())
+        {
+            emailRegisztracioWarningLabel.setVisible(true);
+            emailRegisztracioWarningLabel.setText("Nem adta meg az email címet!");
+            mindenHelyesenKitoltve = false;
+        }
+        else if (!emailMatcher.matches())
+        {
+            emailRegisztracioWarningLabel.setVisible(true);
+            emailRegisztracioWarningLabel.setText("Hibás email cím formátum!");
+            mindenHelyesenKitoltve = false;
+        }
+        
+        if (jelszoRegisztracioTextbox.getText().isBlank())
+        {
+            jelszoRegisztracioWarningLabel.setVisible(true);
+            jelszoRegisztracioWarningLabel.setText("Nem adta meg a jelszót!");
+            mindenHelyesenKitoltve = false;
+        }
+        
+        if (megerositoJelszoTextbox.getText().equals(jelszoRegisztracioTextbox.getText()))
+        {
+            megerositojelszoRegisztracioWarningLabel.setVisible(true);
+            megerositojelszoRegisztracioWarningLabel.setText("A jelszavaknak meg kell egyezniük!");
+            mindenHelyesenKitoltve = false;
+        }
+        
+        if (nevTextbox.getText().isBlank())
+        {
+            nevRegisztracioWarningLabel.setVisible(true);
+            nevRegisztracioWarningLabel.setText("Nem adta meg a nevét!");
+            mindenHelyesenKitoltve = false;
+        }
+        
+        String telefonszamRegex = "^(20|30|70){1}[0-9]{7}$";
+        Pattern telefonszamPattern = Pattern.compile(telefonszamRegex);
+        Matcher telefonszamMatcher = telefonszamPattern.matcher(telefonszamTextbox.getText());
+        
+        if (telefonszamTextbox.getText().isBlank())
+        {
+            telefonszamRegisztracioWarningLabel.setVisible(true);
+            telefonszamRegisztracioWarningLabel.setText("Nem adta meg a telefonszámát!");
+            mindenHelyesenKitoltve = false;
+        }
+        else if (!telefonszamMatcher.matches())
+        {
+            telefonszamRegisztracioWarningLabel.setVisible(true);
+            telefonszamRegisztracioWarningLabel.setText("Hibás telefonszám formátum!");
+            mindenHelyesenKitoltve = false;
+        }
+        
         return mindenHelyesenKitoltve;
     }
     
