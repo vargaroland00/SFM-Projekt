@@ -34,10 +34,7 @@ public class MainApp extends Application{
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        
-        
     }
-    
     
     private static void startDatabase() throws SQLException {
         new Server().runTool("-tcp", "-web", "-ifNotExists");
