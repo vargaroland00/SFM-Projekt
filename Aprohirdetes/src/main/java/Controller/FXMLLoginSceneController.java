@@ -122,7 +122,7 @@ public class FXMLLoginSceneController implements Initializable
 
                 felhasznalo.setNev(nevTextbox.getText());
                 felhasznalo.setTelefonszam(telefonszamTextbox.getText());
-                felhasznalo.setJogosultsag(jogosultsagDropdown.getValue());
+                felhasznalo.setJogosultsag(jogosultsagDropdown.getSelectionModel().getSelectedItem().toString());
                 
                 try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
                 {

@@ -221,6 +221,8 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
                 }
             });
                 
+            hirdeteseimTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+            
             hirdeteseimTable.setItems(hirdeteseimTableData);
         } 
         catch (Exception ex) 

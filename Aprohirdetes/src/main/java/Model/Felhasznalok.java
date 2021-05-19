@@ -45,8 +45,9 @@ public class Felhasznalok
         return jogosultsag;
     }
 
-    public void setJogosultsag(String jogosultsag) {
-        if (jogosultsag == this.jogosultsag.ADMIN.toString())
+    public void setJogosultsag(String jogosultsag) 
+    {
+        if (jogosultsag.toUpperCase().equals(this.jogosultsag.ADMIN.toString()))
         {
             this.jogosultsag = this.jogosultsag.ADMIN;
         }

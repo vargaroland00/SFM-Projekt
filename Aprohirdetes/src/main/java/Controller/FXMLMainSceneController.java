@@ -208,9 +208,6 @@ public class FXMLMainSceneController implements Initializable {
                     }
 
                     setGraphic(button);
-                    /*button.setOnAction(
-                        event -> FXMLHirdetesSceneController.aktualisHirdetes = hirdetes
-                    );*/
                 }
             });
             
