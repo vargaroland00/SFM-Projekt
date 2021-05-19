@@ -96,7 +96,23 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
     
     @FXML
     private void onBeallitasokButton() {
-        
+        try 
+        {
+            Parent beallitasokRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLBeallitasokScene.fxml"));
+
+            Scene mainScene = beallitasokButton.getScene();
+            Window window = mainScene.getWindow();
+
+            Stage BeallitasokStage = (Stage) window;
+            beallitasokButton.getScene().setRoot(beallitasokRoot);
+
+            BeallitasokStage.setTitle("Bejelentkezés/Regisztráció");
+            BeallitasokStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
