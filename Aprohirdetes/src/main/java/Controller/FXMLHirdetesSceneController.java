@@ -5,6 +5,11 @@
  */
 package Controller;
 
+
+import Model.Felhasznalok;
+import Model.Hirdetesek;
+import aprohirdetes.JPAFelhasznalokDAO;
+import aprohirdetes.JPAHirdetesekDAO;
 import Model.Hirdetesek;
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +41,8 @@ import javafx.stage.Window;
  */
 public class FXMLHirdetesSceneController implements Initializable {
     
+    public static Hirdetesek aktualisHirdetes;
+
     @FXML
     private Button megsemButton;
 
@@ -57,16 +64,14 @@ public class FXMLHirdetesSceneController implements Initializable {
     @FXML
     private Label kuldesLabel;
 
-    
     @FXML
     private void LoadHirdetes()
     {
-//        nameLabel.setText(Model.Hirdetesek);
-//        leirasLabel.setText(Hirdetesek.getNev());
-//        varosLabel.setText(Hirdetesek.getNev());
-//        arLabel.setText(Hirdetesek.getNev());
-//        kuldesLabel.setText(Hirdetesek.getNev());
-        
+        nameLabel.setText(aktualisHirdetes.getNev());
+        leirasLabel.setText(aktualisHirdetes.getLeiras());
+        varosLabel.setText(aktualisHirdetes.getHely());
+        arLabel.setText(""+aktualisHirdetes.getAr());
+        kuldesLabel.setText(aktualisHirdetes.getCsomagkuldes().toString());     
     }
     
     @Override
@@ -80,14 +85,14 @@ public class FXMLHirdetesSceneController implements Initializable {
         {
             Parent mainMegvasarol = FXMLLoader.load(getClass().getResource("/FXML/FXMLSikeresVasarlas.fxml"));
 
-            Scene loginScene = megvasarolButton.getScene();
-            Window window = loginScene.getWindow();
+            Scene HirdetesScene = megvasarolButton.getScene();
+            Window window = HirdetesScene.getWindow();
             
             Stage mainStage = (Stage) window;
             megvasarolButton.getScene().setRoot(mainMegvasarol);
             
-            //mainStage.setTitle("Apróhirdetés");
-            //mainStage.show();
+            mainStage.setTitle("Apróhirdetés");
+            mainStage.show();
         } 
         catch (IOException ex) 
         {
@@ -97,6 +102,26 @@ public class FXMLHirdetesSceneController implements Initializable {
     
      @FXML
     private void onMegsemButton() {
-        Platform.exit();
+        atiranyitasFoablak();
     }
+
+ void atiranyitasFoablak()
+    {
+        try {
+        Parent mainSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
+        
+        Scene mainScene = megsemButton.getScene();
+        Window window = mainScene.getWindow();
+        
+        Stage MainStage = (Stage) window;
+        megsemButton.getScene().setRoot(mainSceneRoot);
+        
+        MainStage.setTitle("Hirdetés feladás");
+        MainStage.show();
+        
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }
