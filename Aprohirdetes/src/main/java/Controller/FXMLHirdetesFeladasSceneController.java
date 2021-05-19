@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Hirdetesek;
 import aprohirdetes.JPAHirdetesekDAO;
+
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -21,8 +22,6 @@ import javafx.stage.Window;
 
 public class FXMLHirdetesFeladasSceneController implements Initializable 
 {
-    int kattintasokSzama = 1;
-    
     @FXML
     private TextField hirdetesneveTextField;
 
@@ -56,8 +55,6 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
     @FXML
     void onHirdetesFeladasaButton() 
     {
-        System.out.println("Kattint..." + kattintasokSzama++);
-        
         boolean mindenHelyesenKitoltve = true; //ha valami nincs helyesen kitoltve, akkor falsera vált
         
         mindenHelyesenKitoltve = kitoltesEllenorzes(mindenHelyesenKitoltve);
@@ -69,8 +66,9 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
             hirdetes.setNev(hirdetesneveTextField.getText());
             hirdetes.setLeiras(leirasTextArea.getText());
             hirdetes.setHely(varosTextField.getText());
-            hirdetes.setDate(LocalDate.now());
+            hirdetes.setFeladasideje(LocalDate.now());
             hirdetes.setAr(Integer.parseInt(arTextField.getText()));
+            hirdetes.setElado(FXMLMainSceneController.bejelentkezoID);
                 
             if (csomagkuldesCheckBox.isSelected())
             {
@@ -147,14 +145,16 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
     void atiranyitasFoablak()
     {
         try {
-        Parent hirdetesFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
+        Parent mainSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
         
-        Scene elozoScene = hirdetesFeladasaButton.getScene();
-        Window window = elozoScene.getWindow();
-        Stage hirdetesFeladasStage = (Stage) window;
-        hirdetesFeladasaButton.getScene().setRoot(hirdetesFeladasRoot);
-        hirdetesFeladasStage.setTitle("Hirdetés feladás");
-        hirdetesFeladasStage.show();
+        Scene hirdetesScene = hirdetesFeladasaButton.getScene();
+        Window window = hirdetesScene.getWindow();
+        
+        Stage MainStage = (Stage) window;
+        hirdetesFeladasaButton.getScene().setRoot(mainSceneRoot);
+        
+        MainStage.setTitle("Hirdetés feladás");
+        MainStage.show();
         
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

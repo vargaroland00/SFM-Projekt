@@ -2,6 +2,7 @@ package aprohirdetes;
 
 import Model.Hirdetesek;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 public interface HirdetesekDAO extends AutoCloseable
 {
