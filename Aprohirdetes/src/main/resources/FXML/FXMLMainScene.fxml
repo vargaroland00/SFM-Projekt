@@ -36,7 +36,7 @@
                               <Insets bottom="5.0" top="5.0" />
                            </HBox.margin>
                         </Label>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Főoldal" textFill="WHITE">
+                        <Button fx:id="fooldalButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onFooldalButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Főoldal" textFill="WHITE">
                            <padding>
                               <Insets bottom="15.0" top="15.0" />
                            </padding>
@@ -48,7 +48,7 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Hirdetéseim" textFill="WHITE">
+                        <Button fx:id="hirdeteseimButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onHirdeteseimButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Hirdetéseim" textFill="WHITE">
                            <padding>
                               <Insets bottom="15.0" top="15.0" />
                            </padding>
@@ -57,7 +57,7 @@
                               <String fx:value="navbarButton" />
                            </styleClass>
                         </Button>
-                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Beállítások" textFill="WHITE">
+                        <Button fx:id="beallitasokButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onBeallitasokButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Beállítások" textFill="WHITE">
                            <padding>
                               <Insets bottom="15.0" top="15.0" />
                            </padding>
