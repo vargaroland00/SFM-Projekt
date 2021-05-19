@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -113,6 +114,54 @@
                         <TableColumn fx:id="megtekintesHirdetesekColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Megtekintés" />
                     </columns>
                   </TableView>
+                  <Label layoutX="12.0" layoutY="194.0" text="Maximum ár:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="minimumArTextField" layoutX="14.0" layoutY="143.0" prefHeight="34.0" prefWidth="175.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="14.0" layoutY="99.0" text="Minimum ár:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="maximumArTextField" layoutX="14.0" layoutY="240.0" prefHeight="34.0" prefWidth="175.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="14.0" layoutY="293.0" text="Város:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="varosTextField" layoutX="14.0" layoutY="334.0" prefHeight="34.0" prefWidth="175.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="12.0" layoutY="389.0" text="Eladó neve:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="eladoNeveTextField" layoutX="12.0" layoutY="439.0" prefHeight="34.0" prefWidth="175.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="46.0" layoutY="501.0" mnemonicParsing="false" onAction="#onSzuresButton" prefHeight="51.0" prefWidth="158.0" style="-fx-background-color: dodgerblue;" text="Szűrés" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
          </center></BorderPane>

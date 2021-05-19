@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -70,6 +71,18 @@ public class FXMLMainSceneController implements Initializable {
 
     @FXML
     private TableColumn<Hirdetesek, Hirdetesek> megtekintesHirdetesekColumn;
+    
+    @FXML
+    private TextField minimumArTextField;
+
+    @FXML
+    private TextField maximumArTextField;
+
+    @FXML
+    private TextField varosTextField;
+
+    @FXML
+    private TextField eladoNeveTextField;
     
     @FXML
     void onKilepesButton() {
@@ -281,4 +294,117 @@ public class FXMLMainSceneController implements Initializable {
         }
     }
     
+    @FXML
+    void onSzuresButton() 
+    {
+        try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
+        {
+            List<Hirdetesek> hirdetesekDataQuery = hDAO.getHirdetesek();
+            
+            ObservableList<Hirdetesek> hirdetesekTableData = FXCollections.observableArrayList();
+            
+            for (Hirdetesek hirdetes : hirdetesekDataQuery) 
+            {
+                System.out.println("Megvasarolva: " + hirdetes.isMegvasarolva());
+                if (hirdetes.isMegvasarolva() == false)
+                {
+                    boolean atment = true;
+                    
+                    if (!maximumArTextField.getText().isBlank())
+                    {
+                        if (Integer.parseInt(maximumArTextField.getText()) <= hirdetes.getAr())
+                        {
+                            atment = false;
+                        }
+                    }
+                    
+                    if (!minimumArTextField.getText().isBlank())
+                    {
+                        if (Integer.parseInt(minimumArTextField.getText()) >= hirdetes.getAr())
+                        {
+                            atment = false;
+                        }
+                    }
+                    
+                    if (!varosTextField.getText().isBlank())
+                    {
+                        if (!hirdetes.getHely().equals(varosTextField.getText()))
+                        {
+                            atment = false;
+                        }
+                    }
+                    
+                    if (!eladoNeveTextField.getText().isBlank())
+                    {
+                        if (!hirdetes.getEladoNev().equals(eladoNeveTextField.getText()))
+                        {
+                            atment = false;
+                        }
+                    }
+                    
+                    if (atment)
+                    {
+                        hirdetesekTableData.add(hirdetes);
+                    }
+                }
+            }
+            
+            nevHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("nev"));
+            
+            nevHirdetesekColumn.setCellFactory(tableColumn -> 
+            {
+                TableCell<Hirdetesek, String> tableCell = new TableCell<>();
+                
+                Text text = new Text();
+                text.setTextAlignment(TextAlignment.CENTER);
+                
+                tableCell.setGraphic(text);
+                tableCell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+                
+                //text.wrappingWidthProperty().bind(nevHirdetesekColumn.widthProperty());
+                text.setWrappingWidth(nevHirdetesekColumn.getWidth() - 20);
+                
+                text.textProperty().bind(tableCell.itemProperty());
+                
+                return tableCell;
+            });
+            
+            arHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("ar"));
+            helyHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("hely"));
+            eladoHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("eladoNev"));
+            
+            megtekintesHirdetesekColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+            
+            megtekintesHirdetesekColumn.setCellFactory(param -> new TableCell<Hirdetesek, Hirdetesek>() 
+            {
+                private final Button button = new Button("Megtekintés");
+                                   
+                @Override
+                protected void updateItem(Hirdetesek hirdetes, boolean empty) {
+                    super.updateItem(hirdetes, empty);
+
+                    if (hirdetes == null)
+                    {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    setGraphic(button);
+                    button.setOnAction(
+                        event -> {FXMLHirdetesSceneController.aktualisHirdetes = hirdetes;
+                                    atiranyitasFoablak();}
+       
+                    );
+                }
+            });
+            
+            hirdetesekTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+            
+            hirdetesekTable.setItems(hirdetesekTableData);
+        } 
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
+    }
 }

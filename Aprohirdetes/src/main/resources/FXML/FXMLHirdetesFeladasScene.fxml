@@ -96,7 +96,7 @@
                         <Insets right="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <CheckBox fx:id="csomagkuldesCheckBox" mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <CheckBox fx:id="csomagkuldesCheckBox" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>

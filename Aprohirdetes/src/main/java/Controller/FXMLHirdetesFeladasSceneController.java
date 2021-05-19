@@ -139,8 +139,7 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
             leirasWarningLabel.setVisible(false);
         }
         
-        String varosPattern = "^[a-z,A-z]{2,}";
-        if (!varosTextField.getText().matches(varosPattern))
+        if (varosTextField.getText().isBlank())
         {
             varosWarningLabel.setVisible(true);
             mindenHelyesenKitoltve = false;
