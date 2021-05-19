@@ -101,7 +101,23 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
 
     @FXML
     private void onFooldalButton() {
-        
+        try 
+        {
+            Parent mainFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
+
+            Scene loginScene = fooldalButton.getScene();
+            Window window = loginScene.getWindow();
+            
+            Stage mainStage = (Stage) window;
+            fooldalButton.getScene().setRoot(mainFeladasRoot);
+            
+            mainStage.setTitle("Apróhirdetés");
+            mainStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
