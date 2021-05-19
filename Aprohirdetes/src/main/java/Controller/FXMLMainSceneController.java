@@ -25,6 +25,15 @@ public class FXMLMainSceneController implements Initializable {
     private Button hirdetesFeladasaButton;
     
     @FXML
+    private Button fooldalButton;
+
+    @FXML
+    private Button hirdeteseimButton;
+
+    @FXML
+    private Button beallitasokButton;
+    
+    @FXML
     void onKilepesButton() {
         Platform.exit();
     }
@@ -42,6 +51,54 @@ public class FXMLMainSceneController implements Initializable {
         hirdetesFeladasStage.show();
         
         } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    @FXML
+    void onBeallitasokButton() 
+    {
+        try 
+        {
+            Parent beallitasokRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLBeallitasokScene.fxml"));
+
+            Scene mainScene = beallitasokButton.getScene();
+            Window window = mainScene.getWindow();
+
+            Stage BeallitasokStage = (Stage) window;
+            beallitasokButton.getScene().setRoot(beallitasokRoot);
+
+            BeallitasokStage.setTitle("Bejelentkezés/Regisztráció");
+            BeallitasokStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @FXML
+    void onFooldalButton() {
+
+    }
+    
+    @FXML
+    void onHirdeteseimButton() {
+        try 
+        {
+            Parent sajatHirdeteseimRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLSajatHirdeteseimScene.fxml"));
+
+            Scene mainScene = hirdeteseimButton.getScene();
+            Window window = mainScene.getWindow();
+
+            Stage sajatHirdeteseimStage = (Stage) window;
+            hirdeteseimButton.getScene().setRoot(sajatHirdeteseimRoot);
+
+            sajatHirdeteseimStage.setTitle("Saját hirdetéseim");
+            sajatHirdeteseimStage.show();
+        } 
+        catch (IOException ex) 
+        {
             System.out.println(ex.getMessage());
         }
     }
