@@ -92,7 +92,7 @@ public class FXMLMainSceneController implements Initializable {
             {
                 if (felhasznalo.getId() == bejelentkezoID)
                 {
-                    udvozloLabel.setText("Jó napot, " + felhasznalo.getNev() + "!");
+                    udvozloLabel.setText("Üdvözlöm, " + felhasznalo.getNev() + "!");
                 }
             }
         }
@@ -138,7 +138,7 @@ public class FXMLMainSceneController implements Initializable {
         {
             System.out.println(ex.toString());
         }
-    }   
+    }
     
     @FXML
     void onKijelentkezesButton() 
