@@ -21,24 +21,21 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class FXMLSikeresVasarlasSceneController implements Initializable 
+public class FXMLSikeresVasarlasSceneController
 {
-@FXML
-    private TextField cimTextField;
+    @FXML
+        private TextField cimTextField;
 
- @FXML
-    private Label cimWarningLabel;
+     @FXML
+        private Label cimWarningLabel;
 
-@FXML
-    private Button OKButton;
+    @FXML
+        private Button OKButton;
 
-@FXML
-    void onOKButton() {
-    boolean mindenHelyesenKitoltve = true;
-
-    mindenHelyesenKitoltve = kitoltesEllenorzes(mindenHelyesenKitoltve);
-    if (mindenHelyesenKitoltve == true) //cím beállítása
+    @FXML
+    void onOKButton() 
     {
+
         try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
         {
             //java.lang.IllegalArgumentException: Removing a detached instance Model.Hirdetesek#77 -> ha nem így törlöm ki
@@ -61,9 +58,8 @@ public class FXMLSikeresVasarlasSceneController implements Initializable
             System.out.println(ex.toString());
         }
     }
-}
-
- void atiranyitasFoablak()
+    
+    void atiranyitasFoablak()
     {
         try {
         Parent mainSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
@@ -87,23 +83,5 @@ public class FXMLSikeresVasarlasSceneController implements Initializable
     {
         cimWarningLabel.setVisible(false);
     }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) 
-    {
-        cimWarningInitialize();
-    } 
-
-    private boolean kitoltesEllenorzes(boolean mindenHelyesenKitoltve) 
-    {
-        if (cimTextField.getText().isBlank())
-        {
-            cimWarningLabel.setVisible(true);
-            mindenHelyesenKitoltve = false;
-        }
-        else {
-            cimWarningLabel.setVisible(false);
-        }
-    return mindenHelyesenKitoltve;
-    }
+   
 }

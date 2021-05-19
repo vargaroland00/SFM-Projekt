@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -33,18 +32,7 @@
                   <Image url="@../Style/Checkmark_green.svg.png" />
                </image>
             </ImageView>
-            <Button fx:id="OKButton" layoutX="831.0" layoutY="538.0" mnemonicParsing="false" onAction="#onOKButton" prefHeight="39.0" prefWidth="116.0" text="OK" />
-            <TextField fx:id="cimTextField" layoutX="392.0" layoutY="383.0" prefHeight="31.0" prefWidth="459.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <Label layoutX="233.0" layoutY="381.0" prefHeight="34.0" prefWidth="155.0" text="Kiszállítási cím: ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="cimWarningLabel" layoutX="392.0" layoutY="423.0" prefHeight="25.0" prefWidth="193.0" text="Nem adott meg címet!" textFill="RED" />
+            <Button fx:id="OKButton" layoutX="583.0" layoutY="389.0" mnemonicParsing="false" onAction="#onOKButton" prefHeight="39.0" prefWidth="116.0" text="OK" />
          </children></Pane>
    </center>
 </BorderPane>

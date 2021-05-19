@@ -170,8 +170,9 @@ public class FXMLMainSceneController implements Initializable {
             
             ObservableList<Hirdetesek> hirdetesekTableData = FXCollections.observableArrayList();
             
-            for (Hirdetesek hirdetes : hirdetesekTableData) 
+            for (Hirdetesek hirdetes : hirdetesekDataQuery) 
             {
+                System.out.println("Megvasarolva: " + hirdetes.isMegvasarolva());
                 if (hirdetes.isMegvasarolva() == false)
                 {
                     hirdetesekTableData.add(hirdetes);
