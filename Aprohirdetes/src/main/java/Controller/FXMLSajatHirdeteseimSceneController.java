@@ -90,7 +90,25 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
     
     private void torles(Hirdetesek hirdetes) 
     {
+        System.out.println("Hirdetes ID: " + hirdetes.getId() + "Hirdetes nev: " + hirdetes.getNev());
         
+        try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
+        {
+            //java.lang.IllegalArgumentException: Removing a detached instance Model.Hirdetesek#77 -> ha nem így törlöm ki
+            List<Hirdetesek> hirdetesekDataQuery = hDAO.getHirdetesek();
+            
+            for (Hirdetesek torlendoHirdetes : hirdetesekDataQuery) 
+            {
+                if (torlendoHirdetes.getId() == hirdetes.getId())
+                {
+                    hDAO.deleteHirdetes(torlendoHirdetes);
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
     }
 
     
