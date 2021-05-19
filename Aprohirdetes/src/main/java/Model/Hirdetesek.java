@@ -20,11 +20,11 @@ public class Hirdetesek
     @Column(nullable = false)
     private String nev;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 5000)
     private String leiras;
     
     @Column(nullable = false)
-    private LocalDate date;  
+    private LocalDate feladasideje;  
     
     @Column(nullable = false)
     private String hely;
@@ -34,7 +34,10 @@ public class Hirdetesek
     
     @Column(nullable = false)
     private int ar;
-
+    
+    @Column(nullable = false)
+    private int elado;
+    
     public int getId() {
         return id;
     }
@@ -55,12 +58,12 @@ public class Hirdetesek
         this.leiras = leiras;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getFeladasideje() {
+        return feladasideje;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setFeladasideje(LocalDate date) {
+        this.feladasideje = date;
     }
 
     public String getHely() {
@@ -85,6 +88,14 @@ public class Hirdetesek
 
     public void setAr(int ar) {
         this.ar = ar;
+    }
+
+    public int getElado() {
+        return elado;
+    }
+
+    public void setElado(int elado) {
+        this.elado = elado;
     }
 
     public enum Csomagkuldes {

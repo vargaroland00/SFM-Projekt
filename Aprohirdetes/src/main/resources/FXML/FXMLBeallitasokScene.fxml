@@ -2,11 +2,10 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLMainSceneController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLBeallitasokSceneController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
          <top>
@@ -94,27 +93,54 @@
             </Pane>
          </top>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Pane BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="hirdetesFeladasaButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" prefHeight="51.0" prefWidth="222.0" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
+                  <Label layoutX="500.0" layoutY="66.0" text="Adatok módosítása">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="476.0" layoutY="200.0" text="Új jelszó:">
                      <font>
                         <Font size="24.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
+                  </Label>
+                  <PasswordField fx:id="jelszoTextbox" layoutX="612.0" layoutY="199.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="343.0" layoutY="271.0" text="Új jelszó mégegyszer:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="megerositoJelszoTextbox" layoutX="612.0" layoutY="270.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="404.0" layoutY="342.0" text="Felhasznalónév:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nevTextbox" layoutX="612.0" layoutY="341.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="437.0" layoutY="417.0" text="Telefonszám:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="611.0" layoutY="417.0" text="+36">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="telefonszamTextbox" layoutX="656.0" layoutY="416.0" prefHeight="37.0" prefWidth="246.0" />
+                  <Button fx:id="adatokmodositasaButton" layoutX="528.0" layoutY="526.0" mnemonicParsing="false" onAction="#onAdatokmodositasaButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Adatok módosítása" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </Button>
-                  <TableView fx:id="hirdetesekTable" layoutX="249.0" prefHeight="668.0" prefWidth="1031.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
-                    <columns>
-                      <TableColumn fx:id="nevHirdetesekColumn" prefWidth="462.0" style="-fx-padding: 10px; -text-alignment: center;" text="Hirdetés neve" />
-                        <TableColumn fx:id="arHirdetesekColumn" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Ár" />
-                      <TableColumn fx:id="helyHirdetesekColumn" minWidth="0.0" prefWidth="152.0" style="-fx-alignment: CENTER;" text="Hely" />
-                        <TableColumn fx:id="feladasidejeHirdetesekColumn" prefWidth="127.0" style="-fx-alignment: CENTER;" text="Feladás ideje" />
-                        <TableColumn fx:id="eladoHirdetesekColumn" minWidth="0.0" prefWidth="138.0" style="-fx-alignment: CENTER;" text="Eladó neve" />
-                    </columns>
-                  </TableView>
+                  <Label fx:id="jelszoWarningLabel" layoutX="612.0" layoutY="236.0" text="Nem adta meg a jelszót!" textFill="RED" />
+                  <Label fx:id="megerositojelszoWarningLabel" layoutX="612.0" layoutY="309.0" text="A jelszavaknak meg kell egyezniük!" textFill="RED" />
+                  <Label fx:id="nevWarningLabel" layoutX="612.0" layoutY="378.0" text="Nem adta meg a felhasználónevét!" textFill="RED" />
+                  <Label fx:id="telefonszamWarningLabel" layoutX="656.0" layoutY="453.0" text="Nem adta meg a telefonszámát!" textFill="RED" />
                </children>
             </Pane>
-         </center></BorderPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>

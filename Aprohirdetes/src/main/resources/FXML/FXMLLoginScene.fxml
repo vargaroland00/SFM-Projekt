@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLLoginSceneController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
+         <top>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="1280.0" styleClass="navBar" stylesheets="@../Style/CSSLoginScene.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="1280.0">
+                     <children>
+                        <Label text="Marketplace" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Style/marketplace_logo.jpg" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKilepesButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSLoginScene.css" text="Kilépés" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="navBarButton" />
+                              <String fx:value="navbarButton" />
+                           </styleClass>
+                           <HBox.margin>
+                              <Insets left="950.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="135.0" layoutY="45.0" text="Bejelentkezés">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="775.0" layoutY="45.0" text="Regisztráció">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="137.0" text="Email:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailBejelentkezesTextbox" layoutX="168.0" layoutY="136.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="68.0" layoutY="213.0" text="Jelszó:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="jelszoBejelentkezesTextbox" layoutX="168.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Button fx:id="LoginButton" layoutX="137.0" layoutY="297.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Bejelentkezés" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="704.0" layoutY="137.0" text="Email:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailRegisztracioTextbox" layoutX="807.0" layoutY="136.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="701.0" layoutY="213.0" text="Jelszó:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="jelszoRegisztracioTextbox" layoutX="807.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="564.0" layoutY="284.0" text="Jelszó mégegyszer:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="megerositoJelszoTextbox" layoutX="807.0" layoutY="283.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="599.0" layoutY="355.0" text="Felhasznalónév:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nevTextbox" layoutX="807.0" layoutY="354.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="632.0" layoutY="430.0" text="Telefonszám:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="806.0" layoutY="430.0" text="+36">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="telefonszamTextbox" layoutX="851.0" layoutY="429.0" prefHeight="37.0" prefWidth="246.0" />
+                  <Button fx:id="RegisztracioButton" layoutX="776.0" layoutY="585.0" mnemonicParsing="false" onAction="#onRegisztracioButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Regisztráció" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="638.0" layoutY="500.0" text="Jogosultság:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="jogosultsagDropdown" layoutX="806.0" layoutY="499.0" prefHeight="37.0" prefWidth="170.0" style="-fx-font-size: 15px;" />
+                  <Label fx:id="emailBejelentkezesWarningLabel" layoutX="168.0" layoutY="173.0" text="Nem adta meg az email címet!" textFill="RED" />
+                  <Label fx:id="jelszoBejelentkezesWarningLabel" layoutX="168.0" layoutY="249.0" text="Nem adta meg a jelszót!" textFill="RED" />
+                  <Label fx:id="emailRegisztracioWarningLabel" layoutX="807.0" layoutY="173.0" text="Nem adta meg az email címet!" textFill="RED" />
+                  <Label fx:id="jelszoRegisztracioWarningLabel" layoutX="807.0" layoutY="249.0" text="Nem adta meg a jelszót!" textFill="RED" />
+                  <Label fx:id="megerositojelszoRegisztracioWarningLabel" layoutX="807.0" layoutY="322.0" text="A jelszavaknak meg kell egyezniük!" textFill="RED" />
+                  <Label fx:id="nevRegisztracioWarningLabel" layoutX="807.0" layoutY="391.0" text="Nem adta meg a felhasználónevét!" textFill="RED" />
+                  <Label fx:id="telefonszamRegisztracioWarningLabel" layoutX="851.0" layoutY="466.0" text="Nem adta meg a telefonszámát!" textFill="RED" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
