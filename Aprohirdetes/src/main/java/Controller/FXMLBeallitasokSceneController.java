@@ -132,7 +132,43 @@ public class FXMLBeallitasokSceneController implements Initializable
     @FXML
     private void onAdatokmodositasaButton() 
     {
-       
+        if (helyesKitoltes())
+        {
+            try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+            {
+                List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+
+                for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+                {
+                    if (felhasznalo.getId() == bejelentkezoID)
+                    {
+                        if (jelszoTextbox.getText().isBlank() == false)
+                        {
+                            felhasznalo.setSalt((PasswordHashing.generateSalt(jelszoTextbox.getText().length())).toString());
+                            felhasznalo.setJelszo((PasswordHashing.hashPassword(jelszoTextbox.getText(), felhasznalo.getSalt())).get());
+                        }
+                        
+                        if (nevTextbox.getText().isBlank() == false)
+                        {
+                            felhasznalo.setNev(nevTextbox.getText());
+                        }
+                        
+                        if (telefonszamTextbox.getText().isBlank() == false)
+                        {
+                            felhasznalo.setTelefonszam(telefonszamTextbox.getText());
+                        }
+
+                        fDAO.updateFelhasznalo(felhasznalo);
+                        
+                        onFooldalButton();
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                System.out.println(ex.toString());
+            }
+        }
     }
 
     @FXML
