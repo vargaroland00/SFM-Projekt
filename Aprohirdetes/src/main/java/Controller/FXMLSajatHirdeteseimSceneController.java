@@ -160,7 +160,7 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
 
                     setGraphic(button);
                     button.setOnAction(
-                        event -> System.out.println("Módosítás...")
+                        event -> FXMLHirdetesModositasSceneController.aktualisHirdetes = hirdetes
                     );
                 }
             });
