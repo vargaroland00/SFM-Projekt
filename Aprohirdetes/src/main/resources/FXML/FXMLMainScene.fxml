@@ -73,9 +73,15 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="400.0" />
+                              <Insets left="300.0" />
                            </HBox.margin>
                         </Label>
+                        <Button fx:id="kijelentkezesButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKijelentkezesButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Kijelentkezés" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="navBarButton" />
+                              <String fx:value="navbarButton" />
+                           </styleClass>
+                        </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onKilepesButton" prefHeight="50.0" prefWidth="100.0" stylesheets="@../Style/CSSMainScene.css" text="Kilépés" textFill="WHITE">
                            <styleClass>
                               <String fx:value="navBarButton" />

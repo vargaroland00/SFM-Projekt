@@ -40,6 +40,9 @@ public class FXMLMainSceneController implements Initializable {
     private Button hirdetesFeladasaButton;
     
     @FXML
+    private Button kijelentkezesButton;
+    
+    @FXML
     private TableView<Hirdetesek> hirdetesekTable;
      
     @FXML
@@ -60,7 +63,7 @@ public class FXMLMainSceneController implements Initializable {
     }
     
     @FXML
-    void onHirdetesFeladasaButton(ActionEvent event) {
+    void onHirdetesFeladasaButton(){
         try {
         Parent hirdetesFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLHirdetesFeladasScene.fxml"));
         
@@ -135,5 +138,29 @@ public class FXMLMainSceneController implements Initializable {
         {
             System.out.println(ex.toString());
         }
-    }    
+    }   
+    
+    @FXML
+    void onKijelentkezesButton() 
+    {
+        try 
+        {
+            bejelentkezoID = -1;
+            Parent hirdetesFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLLoginScene.fxml"));
+
+            Scene mainScene = kijelentkezesButton.getScene();
+            Window window = mainScene.getWindow();
+
+            Stage LoginStage = (Stage) window;
+            kijelentkezesButton.getScene().setRoot(hirdetesFeladasRoot);
+
+            LoginStage.setTitle("Bejelentkezés/Regisztráció");
+            LoginStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
 }

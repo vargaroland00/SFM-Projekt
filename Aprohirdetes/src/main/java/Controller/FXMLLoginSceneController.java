@@ -168,16 +168,16 @@ public class FXMLLoginSceneController implements Initializable
             try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
             {
                 List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
-
+                boolean letezikEmail = false;
+                    
                 for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
                 {
                     if (felhasznalo.getEmail().equals(emailBejelentkezesTextbox.getText()))
                     {
-                        System.out.println("Található ilyen email cim az adatbazsiban!");
-                        System.out.println("Megfelelo jelszo: " + PasswordHashing.verifyPassword(jelszoBejelentkezesTextbox.getText(), felhasznalo.getJelszo(), felhasznalo.getSalt()));
+                        letezikEmail = true;
+                        
                         if (PasswordHashing.verifyPassword(jelszoBejelentkezesTextbox.getText(), felhasznalo.getJelszo(), felhasznalo.getSalt()))
                         {
-                            System.out.println("Átirányítás -> ......");
                             atiranyitasMainScene(felhasznalo.getId());
                         }
                         else
@@ -185,11 +185,15 @@ public class FXMLLoginSceneController implements Initializable
                             jelszoBejelentkezesWarningLabel.setVisible(true);
                             jelszoBejelentkezesWarningLabel.setText("Hibás jelszó!");
                         }
+                        
+                        break;
                     }
-                    else {
-                        emailBejelentkezesWarningLabel.setVisible(true);
-                        emailBejelentkezesWarningLabel.setText("Nem található ilyen email az adatbázisban!");
-                    }
+                }
+                
+                if (letezikEmail == false)
+                {
+                    emailBejelentkezesWarningLabel.setVisible(true);
+                    emailBejelentkezesWarningLabel.setText("Nem található ilyen email az adatbázisban!");
                 }
             }
             catch (Exception ex) 
@@ -290,7 +294,7 @@ public class FXMLLoginSceneController implements Initializable
         if (nevTextbox.getText().isBlank())
         {
             nevRegisztracioWarningLabel.setVisible(true);
-            nevRegisztracioWarningLabel.setText("Nem adta meg a nevét!");
+            nevRegisztracioWarningLabel.setText("Nem adta meg a felhasználónevét!");
             mindenHelyesenKitoltve = false;
         }
         

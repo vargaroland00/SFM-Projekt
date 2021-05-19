@@ -76,6 +76,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <PasswordField fx:id="jelszoBejelentkezesTextbox" layoutX="168.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
                   <Button fx:id="LoginButton" layoutX="137.0" layoutY="297.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Bejelentkezés" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
@@ -92,48 +93,47 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <PasswordField fx:id="jelszoRegisztracioTextbox" layoutX="807.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
                   <Label layoutX="564.0" layoutY="284.0" text="Jelszó mégegyszer:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="718.0" layoutY="355.0" text="Név:">
+                  <PasswordField fx:id="megerositoJelszoTextbox" layoutX="807.0" layoutY="283.0" prefHeight="37.0" prefWidth="290.0" />
+                  <Label layoutX="599.0" layoutY="355.0" text="Felhasznalónév:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <TextField fx:id="nevTextbox" layoutX="807.0" layoutY="354.0" prefHeight="37.0" prefWidth="290.0" />
-                  <Button fx:id="RegisztracioButton" layoutX="776.0" layoutY="585.0" mnemonicParsing="false" onAction="#onRegisztracioButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Regisztráció" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="emailBejelentkezesWarningLabel" layoutX="168.0" layoutY="173.0" text="Nem adta meg az email címet!" textFill="RED" />
-                  <Label fx:id="jelszoBejelentkezesWarningLabel" layoutX="168.0" layoutY="249.0" text="Nem adta meg a jelszót!" textFill="RED" />
-                  <Label fx:id="emailRegisztracioWarningLabel" layoutX="807.0" layoutY="173.0" text="Nem adta meg az email címet!" textFill="RED" />
-                  <Label fx:id="jelszoRegisztracioWarningLabel" layoutX="807.0" layoutY="249.0" text="Nem adta meg a jelszót!" textFill="RED" />
-                  <Label fx:id="megerositojelszoRegisztracioWarningLabel" layoutX="807.0" layoutY="322.0" text="A jelszavaknak meg kell egyezniük!" textFill="RED" />
-                  <Label fx:id="nevRegisztracioWarningLabel" layoutX="807.0" layoutY="391.0" text="Nem adta meg a nevét!" textFill="RED" />
-                  <Label layoutX="638.0" layoutY="500.0" text="Jogosultság:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <PasswordField fx:id="jelszoBejelentkezesTextbox" layoutX="168.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
-                  <PasswordField fx:id="jelszoRegisztracioTextbox" layoutX="807.0" layoutY="212.0" prefHeight="37.0" prefWidth="290.0" />
-                  <PasswordField fx:id="megerositoJelszoTextbox" layoutX="807.0" layoutY="283.0" prefHeight="37.0" prefWidth="290.0" />
-                  <ChoiceBox fx:id="jogosultsagDropdown" layoutX="806.0" layoutY="499.0" prefHeight="37.0" prefWidth="170.0" style="-fx-font-size: 15px;" />
                   <Label layoutX="632.0" layoutY="430.0" text="Telefonszám:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="telefonszamTextbox" layoutX="851.0" layoutY="429.0" prefHeight="37.0" prefWidth="246.0" />
                   <Label layoutX="806.0" layoutY="430.0" text="+36">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="telefonszamTextbox" layoutX="851.0" layoutY="429.0" prefHeight="37.0" prefWidth="246.0" />
+                  <Button fx:id="RegisztracioButton" layoutX="776.0" layoutY="585.0" mnemonicParsing="false" onAction="#onRegisztracioButton" prefHeight="47.0" prefWidth="224.0" style="-fx-background-color: dodgerblue;" text="Regisztráció" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="638.0" layoutY="500.0" text="Jogosultság:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="jogosultsagDropdown" layoutX="806.0" layoutY="499.0" prefHeight="37.0" prefWidth="170.0" style="-fx-font-size: 15px;" />
+                  <Label fx:id="emailBejelentkezesWarningLabel" layoutX="168.0" layoutY="173.0" text="Nem adta meg az email címet!" textFill="RED" />
+                  <Label fx:id="jelszoBejelentkezesWarningLabel" layoutX="168.0" layoutY="249.0" text="Nem adta meg a jelszót!" textFill="RED" />
+                  <Label fx:id="emailRegisztracioWarningLabel" layoutX="807.0" layoutY="173.0" text="Nem adta meg az email címet!" textFill="RED" />
+                  <Label fx:id="jelszoRegisztracioWarningLabel" layoutX="807.0" layoutY="249.0" text="Nem adta meg a jelszót!" textFill="RED" />
+                  <Label fx:id="megerositojelszoRegisztracioWarningLabel" layoutX="807.0" layoutY="322.0" text="A jelszavaknak meg kell egyezniük!" textFill="RED" />
+                  <Label fx:id="nevRegisztracioWarningLabel" layoutX="807.0" layoutY="391.0" text="Nem adta meg a felhasználónevét!" textFill="RED" />
                   <Label fx:id="telefonszamRegisztracioWarningLabel" layoutX="851.0" layoutY="466.0" text="Nem adta meg a telefonszámát!" textFill="RED" />
                </children>
             </Pane>
