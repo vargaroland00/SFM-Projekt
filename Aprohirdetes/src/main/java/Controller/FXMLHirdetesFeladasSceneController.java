@@ -1,11 +1,15 @@
 package Controller;
 
+import static Controller.FXMLMainSceneController.bejelentkezoID;
+import Model.Felhasznalok;
 import Model.Hirdetesek;
+import aprohirdetes.JPAFelhasznalokDAO;
 import aprohirdetes.JPAHirdetesekDAO;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,14 +66,30 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
         if (mindenHelyesenKitoltve == true) //értékek beállítása
         {
             Hirdetesek hirdetes = new Hirdetesek();
-            //leirasTextArea.getText().replaceAll("\n", System.getProperty("line.separator"));
             hirdetes.setNev(hirdetesneveTextField.getText());
             hirdetes.setLeiras(leirasTextArea.getText());
             hirdetes.setHely(varosTextField.getText());
             hirdetes.setFeladasideje(LocalDate.now());
             hirdetes.setAr(Integer.parseInt(arTextField.getText()));
-            hirdetes.setElado(FXMLMainSceneController.bejelentkezoID);
+            hirdetes.setElado(FXMLMainSceneController.bejelentkezoID); 
+           
+            try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+            {
+                List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
                 
+                for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+                {
+                    if (felhasznalo.getId() == bejelentkezoID)
+                    {
+                        hirdetes.setEladoNev(felhasznalo.getNev());
+                    }
+                }
+            } 
+            catch (Exception ex) 
+            {
+                System.out.println(ex.toString());
+            }
+            
             if (csomagkuldesCheckBox.isSelected())
             {
                 hirdetes.setCsomagkuldes(Hirdetesek.Csomagkuldes.IGEN);

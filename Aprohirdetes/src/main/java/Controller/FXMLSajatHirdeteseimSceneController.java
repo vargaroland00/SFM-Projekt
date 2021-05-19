@@ -161,6 +161,7 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
             arHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("ar"));
             helyHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("hely"));
             feladasidejeHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("feladasideje"));
+            megvasarolvaHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("megvasarolva"));
             
             modositasHirdetesekColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
             

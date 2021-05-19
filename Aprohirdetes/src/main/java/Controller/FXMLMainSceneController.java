@@ -64,6 +64,9 @@ public class FXMLMainSceneController implements Initializable {
 
     @FXML
     private TableColumn<Hirdetesek, String> helyHirdetesekColumn;
+    
+    @FXML
+    private TableColumn<Hirdetesek, String> eladoHirdetesekColumn;
 
     @FXML
     private TableColumn<Hirdetesek, Hirdetesek> megtekintesHirdetesekColumn;
@@ -190,6 +193,7 @@ public class FXMLMainSceneController implements Initializable {
             
             arHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("ar"));
             helyHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("hely"));
+            eladoHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("eladoNev"));
             
             megtekintesHirdetesekColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
             
@@ -208,6 +212,11 @@ public class FXMLMainSceneController implements Initializable {
                     }
 
                     setGraphic(button);
+                    button.setOnAction(
+                        event -> {FXMLHirdetesSceneController.aktualisHirdetes = hirdetes;
+                                    atiranyitasFoablak();}
+       
+                    );
                 }
             });
             
@@ -221,6 +230,26 @@ public class FXMLMainSceneController implements Initializable {
         }
     }
     
+ 
+    void atiranyitasFoablak()
+    {
+        try {
+        Parent mainSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLHirdetesScene.fxml"));
+        
+        Scene Fooldal = fooldalButton.getScene();
+        Window window = Fooldal.getWindow();
+        
+        Stage MainStage = (Stage) window;
+        fooldalButton.getScene().setRoot(mainSceneRoot);
+        
+        MainStage.setTitle("Megtekintés");
+        MainStage.show();
+        
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     @FXML
     void onKijelentkezesButton() 
     {

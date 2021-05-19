@@ -1,0 +1,27 @@
+.navBar {
+    -fx-background-color: dodgerblue;
+}
+
+.navbarButton {
+    -fx-background-color: rgb(30,144,255);
+    -fx-border-radius: 0;
+    -fx-font-weight: bold;
+}
+
+.navBarButton:hover {
+    -fx-background-color: rgb(22,108,191)
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-background-color: dodgerblue;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header {
+    -fx-background-color: dodgerblue;
+}
+
+.table-row-cell {
+    -fx-cell-size: 40px;
+}

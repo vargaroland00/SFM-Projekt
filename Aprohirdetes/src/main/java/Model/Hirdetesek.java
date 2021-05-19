@@ -38,6 +38,20 @@ public class Hirdetesek
     @Column(nullable = false)
     private int elado;
     
+    @Column(nullable = false)
+    private boolean megvasarolva = false;
+    
+    @Column(nullable = false)
+    private String eladoNev;
+
+    public String getEladoNev() {
+        return eladoNev;
+    }
+
+    public void setEladoNev(String eladoNev) {
+        this.eladoNev = eladoNev;
+    }
+    
     public int getId() {
         return id;
     }
@@ -96,6 +110,14 @@ public class Hirdetesek
 
     public void setElado(int elado) {
         this.elado = elado;
+    }
+
+    public boolean isMegvasarolva() {
+        return megvasarolva;
+    }
+
+    public void setMegvasarolva(boolean megvasarolva) {
+        this.megvasarolva = megvasarolva;
     }
 
     public enum Csomagkuldes {

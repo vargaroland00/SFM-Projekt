@@ -32,12 +32,6 @@ public class Felhasznalok
     @Column(nullable = false)
     private String telefonszam;
     
-    @Column(nullable = true)
-    private String szamlazasi_cim;
-    
-    @Column(nullable = true)
-    private String szallitasi_cim;
-    
     @Enumerated(EnumType.STRING)
     private Jogosultsag jogosultsag;
 
@@ -108,22 +102,4 @@ public class Felhasznalok
     public void setSalt(String salt) {
         this.salt = salt;
     }
-
-    public String getSzamlazasi_cim() {
-        return szamlazasi_cim;
-    }
-
-    public void setSzamlazasi_cim(String szamlazasi_cim) {
-        this.szamlazasi_cim = szamlazasi_cim;
-    }
-
-    public String getSzallitasi_cim() {
-        return szallitasi_cim;
-    }
-
-    public void setSzallitasi_cim(String szallitasi_cim) {
-        this.szallitasi_cim = szallitasi_cim;
-    }
-    
-    
 }
