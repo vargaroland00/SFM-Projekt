@@ -160,7 +160,10 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
 
                     setGraphic(button);
                     button.setOnAction(
-                        event -> FXMLHirdetesModositasSceneController.aktualisHirdetes = hirdetes
+                        event -> {
+                            FXMLHirdetesModositasSceneController.aktualisHirdetes = hirdetes;
+                            atiranyitasModositasScene();
+                        }
                     );
                 }
             });
@@ -200,10 +203,28 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
         }
     }
     
+    private void atiranyitasModositasScene()
+    {
+        try {
+            Parent hirdetesModositasSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLHirdetesModositasaScene.fxml"));
+
+            Scene sajatHirdeteseimScene = fooldalButton.getScene();
+            Window window = sajatHirdeteseimScene.getWindow();
+
+            Stage hirdetesModositasStage = (Stage) window;
+            fooldalButton.getScene().setRoot(hirdetesModositasSceneRoot);
+
+            hirdetesModositasStage.setTitle("Hirdetés módosítás");
+            hirdetesModositasStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     private void torles(Hirdetesek hirdetes) 
     {
-        System.out.println("Hirdetes ID: " + hirdetes.getId() + "Hirdetes nev: " + hirdetes.getNev());
-        
         try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
         {
             //java.lang.IllegalArgumentException: Removing a detached instance Model.Hirdetesek#77 -> ha nem így törlöm ki
