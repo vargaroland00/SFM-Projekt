@@ -110,11 +110,37 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
             
             ObservableList<Hirdetesek> hirdeteseimTableData = FXCollections.observableArrayList();
             
-            for (Hirdetesek hirdetes : hirdetesekDataQuery) 
+            boolean isAdmin = false;
+            
+            try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
             {
-                if (hirdetes.getElado() == bejelentkezoID)
+                List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+                
+                for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
                 {
-                    hirdeteseimTableData.add(hirdetes);
+                    if (felhasznalo.getId() == bejelentkezoID && felhasznalo.getJogosultsag().toString().equals("ADMIN"))
+                    {
+                        isAdmin = true;
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                System.out.println(ex.toString());
+            }
+            
+            if (isAdmin)
+            {
+                hirdeteseimTableData.addAll(hirdetesekDataQuery);
+            }
+            else
+            {
+                for (Hirdetesek hirdetes : hirdetesekDataQuery) 
+                {
+                    if (hirdetes.getElado() == bejelentkezoID)
+                    {
+                        hirdeteseimTableData.add(hirdetes);
+                    }
                 }
             }
             
