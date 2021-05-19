@@ -111,12 +111,29 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
 
     @FXML
     private void onKijelentkezesButton() {
-        
+        try 
+        {
+            bejelentkezoID = -1;
+            Parent hirdetesFeladasRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLLoginScene.fxml"));
+
+            Scene mainScene = kijelentkezesButton.getScene();
+            Window window = mainScene.getWindow();
+
+            Stage LoginStage = (Stage) window;
+            kijelentkezesButton.getScene().setRoot(hirdetesFeladasRoot);
+
+            LoginStage.setTitle("Bejelentkezés/Regisztráció");
+            LoginStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 
     @FXML
     private void onKilepesButton() {
-            
+        Platform.exit();    
     }
 
     @FXML
