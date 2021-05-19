@@ -85,7 +85,119 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+        {
+            List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+            
+            for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+            {
+                if (felhasznalo.getId() == bejelentkezoID)
+                {
+                    udvozloLabel.setText("Üdvözlöm, " + felhasznalo.getNev() + "!");
+                    
+                    break;
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
         
+        try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
+        {
+            List<Hirdetesek> hirdetesekDataQuery = hDAO.getHirdetesek();
+            
+            ObservableList<Hirdetesek> hirdeteseimTableData = FXCollections.observableArrayList();
+            
+            for (Hirdetesek hirdetes : hirdetesekDataQuery) 
+            {
+                if (hirdetes.getElado() == bejelentkezoID)
+                {
+                    hirdeteseimTableData.add(hirdetes);
+                }
+            }
+            
+            nevHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("nev"));
+            
+            nevHirdetesekColumn.setCellFactory(tableColumn -> 
+            {
+                TableCell<Hirdetesek, String> tableCell = new TableCell<>();
+                
+                Text text = new Text();
+                text.setTextAlignment(TextAlignment.CENTER);
+                
+                tableCell.setGraphic(text);
+                tableCell.setPrefHeight(Control.USE_COMPUTED_SIZE);
+                
+                //text.wrappingWidthProperty().bind(nevHirdetesekColumn.widthProperty());
+                text.setWrappingWidth(nevHirdetesekColumn.getWidth() - 20);
+                
+                text.textProperty().bind(tableCell.itemProperty());
+                
+                return tableCell;
+            });
+            
+            arHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("ar"));
+            helyHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("hely"));
+            feladasidejeHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("feladasideje"));
+            
+            modositasHirdetesekColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+            
+            modositasHirdetesekColumn.setCellFactory(param -> new TableCell<Hirdetesek, Hirdetesek>() 
+            {
+                private final Button button = new Button("Módosítás");
+                                   
+                @Override
+                protected void updateItem(Hirdetesek hirdetes, boolean empty) {
+                    super.updateItem(hirdetes, empty);
+
+                    if (hirdetes == null)
+                    {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    setGraphic(button);
+                    button.setOnAction(
+                        event -> System.out.println("Módosítás...")
+                    );
+                }
+            });
+            
+            torlesHirdetesekColumn.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+            
+            torlesHirdetesekColumn.setCellFactory(param -> new TableCell<Hirdetesek, Hirdetesek>() 
+            {
+                private final Button button = new Button("Törlés");
+                                   
+                @Override
+                protected void updateItem(Hirdetesek hirdetes, boolean empty) {
+                    super.updateItem(hirdetes, empty);
+
+                    if (hirdetes == null)
+                    {
+                        setGraphic(null);
+                        return;
+                    }
+
+                    setGraphic(button);
+                    button.setOnAction(
+                            event -> 
+                            {
+                                hirdeteseimTableData.remove(hirdetes);
+                                torles(hirdetes);
+                            }
+                    );
+                }
+            });
+                
+            hirdeteseimTable.setItems(hirdeteseimTableData);
+        } 
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
     }
     
     private void torles(Hirdetesek hirdetes) 
