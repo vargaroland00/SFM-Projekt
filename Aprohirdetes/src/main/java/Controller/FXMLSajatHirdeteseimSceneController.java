@@ -110,11 +110,37 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
             
             ObservableList<Hirdetesek> hirdeteseimTableData = FXCollections.observableArrayList();
             
-            for (Hirdetesek hirdetes : hirdetesekDataQuery) 
+            boolean isAdmin = false;
+            
+            try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
             {
-                if (hirdetes.getElado() == bejelentkezoID)
+                List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+                
+                for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
                 {
-                    hirdeteseimTableData.add(hirdetes);
+                    if (felhasznalo.getId() == bejelentkezoID && felhasznalo.getJogosultsag().toString().equals("ADMIN"))
+                    {
+                        isAdmin = true;
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                System.out.println(ex.toString());
+            }
+            
+            if (isAdmin)
+            {
+                hirdeteseimTableData.addAll(hirdetesekDataQuery);
+            }
+            else
+            {
+                for (Hirdetesek hirdetes : hirdetesekDataQuery) 
+                {
+                    if (hirdetes.getElado() == bejelentkezoID)
+                    {
+                        hirdeteseimTableData.add(hirdetes);
+                    }
                 }
             }
             
@@ -160,7 +186,10 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
 
                     setGraphic(button);
                     button.setOnAction(
-                        event -> System.out.println("Módosítás...")
+                        event -> {
+                            FXMLHirdetesModositasSceneController.aktualisHirdetes = hirdetes;
+                            atiranyitasModositasScene();
+                        }
                     );
                 }
             });
@@ -192,6 +221,8 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
                 }
             });
                 
+            hirdeteseimTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+            
             hirdeteseimTable.setItems(hirdeteseimTableData);
         } 
         catch (Exception ex) 
@@ -200,10 +231,28 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
         }
     }
     
+    private void atiranyitasModositasScene()
+    {
+        try {
+            Parent hirdetesModositasSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLHirdetesModositasaScene.fxml"));
+
+            Scene sajatHirdeteseimScene = fooldalButton.getScene();
+            Window window = sajatHirdeteseimScene.getWindow();
+
+            Stage hirdetesModositasStage = (Stage) window;
+            fooldalButton.getScene().setRoot(hirdetesModositasSceneRoot);
+
+            hirdetesModositasStage.setTitle("Hirdetés módosítás");
+            hirdetesModositasStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     private void torles(Hirdetesek hirdetes) 
     {
-        System.out.println("Hirdetes ID: " + hirdetes.getId() + "Hirdetes nev: " + hirdetes.getNev());
-        
         try (JPAHirdetesekDAO hDAO = new JPAHirdetesekDAO();)
         {
             //java.lang.IllegalArgumentException: Removing a detached instance Model.Hirdetesek#77 -> ha nem így törlöm ki
