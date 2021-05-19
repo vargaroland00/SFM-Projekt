@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Hirdetesek;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -34,7 +35,7 @@ import javafx.stage.Window;
  * @author Omen
  */
 public class FXMLHirdetesSceneController implements Initializable {
-
+    
     @FXML
     private Button megsemButton;
 
@@ -60,7 +61,12 @@ public class FXMLHirdetesSceneController implements Initializable {
     @FXML
     private void LoadHirdetes()
     {
-        nameLabel.setText(model.getHirdetesek());
+//        nameLabel.setText(Model.Hirdetesek);
+//        leirasLabel.setText(Hirdetesek.getNev());
+//        varosLabel.setText(Hirdetesek.getNev());
+//        arLabel.setText(Hirdetesek.getNev());
+//        kuldesLabel.setText(Hirdetesek.getNev());
+        
     }
     
     @Override
@@ -70,7 +76,23 @@ public class FXMLHirdetesSceneController implements Initializable {
     
      @FXML
     private void onMegvasarolButton() {
-        
+        try 
+        {
+            Parent mainMegvasarol = FXMLLoader.load(getClass().getResource("/FXML/FXMLSikeresVasarlas.fxml"));
+
+            Scene loginScene = megvasarolButton.getScene();
+            Window window = loginScene.getWindow();
+            
+            Stage mainStage = (Stage) window;
+            megvasarolButton.getScene().setRoot(mainMegvasarol);
+            
+            //mainStage.setTitle("Apróhirdetés");
+            //mainStage.show();
+        } 
+        catch (IOException ex) 
+        {
+            System.out.println(ex.getMessage());
+        }
     }
     
      @FXML
