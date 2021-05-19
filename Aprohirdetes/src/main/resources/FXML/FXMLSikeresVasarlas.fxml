@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLSikeresVasarlasSceneController">
    <top>
       <Pane prefHeight="50.0" prefWidth="1280.0" style="-fx-background-color: dodgerblue;" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="196.0" layoutY="8.0" text="Értesítés" textFill="WHITE">
+            <Label layoutX="596.0" layoutY="8.0" text="Értesítés" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -19,18 +21,30 @@
          </children></Pane>
    </top>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="720.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="152.0" layoutY="73.0" text="Sikeres vásárlás! " textFill="#00d70b">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="507.0" layoutY="43.0" prefHeight="56.0" prefWidth="267.0" text="Sikeres vásárlás! " textFill="#00d70b">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="135.0" fitWidth="150.0" layoutX="165.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="135.0" fitWidth="150.0" layoutX="565.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Style/Checkmark_green.svg.png" />
                </image>
             </ImageView>
+            <Button fx:id="OKButton" layoutX="831.0" layoutY="538.0" mnemonicParsing="false" onAction="#onOKButton" prefHeight="39.0" prefWidth="116.0" text="OK" />
+            <TextField fx:id="cimTextField" layoutX="392.0" layoutY="383.0" prefHeight="31.0" prefWidth="459.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="233.0" layoutY="381.0" prefHeight="34.0" prefWidth="155.0" text="Kiszállítási cím: ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="cimWarningLabel" layoutX="392.0" layoutY="423.0" prefHeight="25.0" prefWidth="193.0" text="Nem adott meg címet!" textFill="RED" />
          </children></Pane>
    </center>
 </BorderPane>
