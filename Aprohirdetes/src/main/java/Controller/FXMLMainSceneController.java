@@ -169,7 +169,14 @@ public class FXMLMainSceneController implements Initializable {
             List<Hirdetesek> hirdetesekDataQuery = hDAO.getHirdetesek();
             
             ObservableList<Hirdetesek> hirdetesekTableData = FXCollections.observableArrayList();
-            hirdetesekTableData.addAll(hirdetesekDataQuery);
+            
+            for (Hirdetesek hirdetes : hirdetesekTableData) 
+            {
+                if (hirdetes.isMegvasarolva() == false)
+                {
+                    hirdetesekTableData.add(hirdetes);
+                }
+            }
             
             nevHirdetesekColumn.setCellValueFactory(new PropertyValueFactory<>("nev"));
             
