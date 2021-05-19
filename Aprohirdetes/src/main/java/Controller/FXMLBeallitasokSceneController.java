@@ -69,12 +69,34 @@ public class FXMLBeallitasokSceneController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-
+        warningInitialize();
+        
+        try (JPAFelhasznalokDAO fDAO = new JPAFelhasznalokDAO();)
+        {
+            List<Felhasznalok> felhasznalokDataQuery = fDAO.getFelhasznalok();
+            
+            for (Felhasznalok felhasznalo : felhasznalokDataQuery) 
+            {
+                if (felhasznalo.getId() == bejelentkezoID)
+                {
+                    udvozloLabel.setText("Üdvözlöm, " + felhasznalo.getNev() + "!");
+                    
+                    break;
+                }
+            }
+        }
+        catch (Exception ex) 
+        {
+            System.out.println(ex.toString());
+        }
     }
     
     private void warningInitialize() 
     {
-
+        jelszoWarningLabel.setVisible(false);
+        megerositojelszoWarningLabel.setVisible(false);
+        nevWarningLabel.setVisible(false);
+        telefonszamWarningLabel.setVisible(false);
     }
     
     private boolean helyesKitoltes()
@@ -85,7 +107,7 @@ public class FXMLBeallitasokSceneController implements Initializable
     @FXML
     private void onAdatokmodositasaButton() 
     {
-        
+       
     }
 
     @FXML
