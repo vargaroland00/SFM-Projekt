@@ -2,7 +2,6 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLMainSceneController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FXMLSajatHirdeteseimSceneController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
          <top>
@@ -96,25 +95,30 @@
          <center>
             <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="hirdetesFeladasaButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onHirdetesFeladasaButton" prefHeight="51.0" prefWidth="222.0" style="-fx-background-color: dodgerblue;" text="Hirdetés feladása" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <TableView fx:id="hirdetesekTable" layoutX="249.0" prefHeight="668.0" prefWidth="1031.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
-                    <columns>
-                      <TableColumn fx:id="nevHirdetesekColumn" prefWidth="462.0" style="-fx-padding: 10px; -text-alignment: center;" text="Hirdetés neve" />
+                  <TableView fx:id="hirdeteseimTable" prefHeight="668.0" prefWidth="1280.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
+                     <columns>
+                        <TableColumn fx:id="nevHirdetesekColumn" prefWidth="462.0" style="-fx-padding: 10px; -text-alignment: center;" text="Hirdetés neve" />
                         <TableColumn fx:id="arHirdetesekColumn" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Ár" />
-                      <TableColumn fx:id="helyHirdetesekColumn" minWidth="0.0" prefWidth="152.0" style="-fx-alignment: CENTER;" text="Hely" />
+                        <TableColumn fx:id="helyHirdetesekColumn" minWidth="0.0" prefWidth="152.0" style="-fx-alignment: CENTER;" text="Hely" />
                         <TableColumn fx:id="feladasidejeHirdetesekColumn" prefWidth="127.0" style="-fx-alignment: CENTER;" text="Feladás ideje" />
-                        <TableColumn fx:id="eladoHirdetesekColumn" minWidth="0.0" prefWidth="138.0" style="-fx-alignment: CENTER;" text="Eladó neve" />
-                    </columns>
+                        <TableColumn fx:id="megvasarolvaHirdetesekColumn" minWidth="0.0" prefWidth="138.0" style="-fx-alignment: CENTER;" text="Megvásárolva" />
+                        <TableColumn fx:id="modositasHirdetesekColumn" prefWidth="125.0" style="-fx-alignment: CENTER;" text="Módosítás" />
+                        <TableColumn fx:id="torlesHirdetesekColumn" prefWidth="125.0" style="-fx-alignment: CENTER;" text="Törlés" />
+                     </columns>
                   </TableView>
+                  <Button fx:id="modositasButton" mnemonicParsing="false" onAction="#onModositasButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: dodgerblue;" text="Módosítás" textFill="WHITE" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="torlesButton" mnemonicParsing="false" onAction="#onTorlesButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: dodgerblue;" text="Törlés" textFill="WHITE" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
-         </center></BorderPane>
+         </center>
+      </BorderPane>
    </children>
 </AnchorPane>
