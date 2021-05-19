@@ -106,11 +106,11 @@
                   </Button>
                   <TableView fx:id="hirdetesekTable" layoutX="249.0" prefHeight="668.0" prefWidth="1031.0" style="-fx-cell-size: 40px; -fx-font-size: 18;">
                     <columns>
-                      <TableColumn fx:id="nevHirdetesekColumn" prefWidth="462.0" style="-fx-padding: 10px; -text-alignment: center;" text="Hirdetés neve" />
-                        <TableColumn fx:id="arHirdetesekColumn" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Ár" />
-                      <TableColumn fx:id="helyHirdetesekColumn" minWidth="0.0" prefWidth="152.0" style="-fx-alignment: CENTER;" text="Hely" />
-                        <TableColumn fx:id="feladasidejeHirdetesekColumn" prefWidth="127.0" style="-fx-alignment: CENTER;" text="Feladás ideje" />
-                        <TableColumn fx:id="eladoHirdetesekColumn" minWidth="0.0" prefWidth="138.0" style="-fx-alignment: CENTER;" text="Eladó neve" />
+                      <TableColumn fx:id="nevHirdetesekColumn" maxWidth="415.0" minWidth="415.0" prefWidth="415.0" style="-fx-padding: 10px; -text-alignment: center;" text="Hirdetés neve" />
+                        <TableColumn fx:id="arHirdetesekColumn" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: CENTER;" text="Ár" />
+                      <TableColumn fx:id="helyHirdetesekColumn" maxWidth="140.0" minWidth="140.0" prefWidth="140.0" style="-fx-alignment: CENTER;" text="Hely" />
+                        <TableColumn fx:id="eladoHirdetesekColumn" maxWidth="180.0" minWidth="180.0" prefWidth="180.0" style="-fx-alignment: CENTER;" text="Eladó neve" />
+                        <TableColumn fx:id="megtekintesHirdetesekColumn" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" style="-fx-alignment: CENTER;" text="Megtekintés" />
                     </columns>
                   </TableView>
                </children>
