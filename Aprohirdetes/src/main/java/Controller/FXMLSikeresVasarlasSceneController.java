@@ -20,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class FXMLHirdetesFeladasSceneController implements Initializable 
+public class FXMLSikeresVasarlasSceneController implements Initializable 
 {
 @FXML
     private TextField cimTextField;
@@ -47,13 +47,13 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
         try {
         Parent mainSceneRoot = FXMLLoader.load(getClass().getResource("/FXML/FXMLMainScene.fxml"));
         
-        Scene hirdetesScene = hirdetesFeladasaButton.getScene();
-        Window window = hirdetesScene.getWindow();
+        Scene SikeresVasarlasScene = OKButton.getScene();
+        Window window = SikeresVasarlasScene.getWindow();
         
         Stage MainStage = (Stage) window;
-        hirdetesFeladasaButton.getScene().setRoot(mainSceneRoot);
+        OKButton.getScene().setRoot(mainSceneRoot);
         
-        MainStage.setTitle("Hirdetés feladás");
+        MainStage.setTitle("Sikeres Vásárlás5");
         MainStage.show();
         
         } catch (IOException ex) {
@@ -82,5 +82,6 @@ public class FXMLHirdetesFeladasSceneController implements Initializable
         else {
             cimWarningLabel.setVisible(false);
         }
+return mindenHelyesenKitoltve;
 }
 }
