@@ -101,7 +101,32 @@ public class FXMLBeallitasokSceneController implements Initializable
     
     private boolean helyesKitoltes()
     {
+        warningInitialize();
+        
+        boolean mindenHelyesenKitoltve = true;
+        
+        if (jelszoTextbox.getText().isBlank() == false)
+        {
+            if (!megerositoJelszoTextbox.getText().equals(jelszoTextbox.getText()))
+            {
+                megerositojelszoWarningLabel.setVisible(true);
+                megerositojelszoWarningLabel.setText("A jelszavaknak meg kell egyezniük!");
+                mindenHelyesenKitoltve = false;
+            }
+        }
+        
+        if (telefonszamTextbox.getText().isBlank() == false)
+        {
+            String telefonszamRegex = "^(20|30|70){1}[0-9]{7}$";
+            if (!telefonszamTextbox.getText().matches(telefonszamRegex))
+            {
+                telefonszamWarningLabel.setVisible(true);
+                telefonszamWarningLabel.setText("Hibás telefonszám formátum!");
+                mindenHelyesenKitoltve = false;
+            }
+        }
 
+        return mindenHelyesenKitoltve;
     }
     
     @FXML
