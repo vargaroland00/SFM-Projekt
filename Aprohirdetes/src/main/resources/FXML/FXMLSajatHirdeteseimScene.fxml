@@ -106,16 +106,6 @@
                         <TableColumn fx:id="torlesHirdetesekColumn" prefWidth="125.0" style="-fx-alignment: CENTER;" text="Törlés" />
                      </columns>
                   </TableView>
-                  <Button fx:id="modositasButton" mnemonicParsing="false" onAction="#onModositasButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: dodgerblue;" text="Módosítás" textFill="WHITE" visible="false">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="torlesButton" mnemonicParsing="false" onAction="#onTorlesButton" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: dodgerblue;" text="Törlés" textFill="WHITE" visible="false">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
                </children>
             </Pane>
          </center>

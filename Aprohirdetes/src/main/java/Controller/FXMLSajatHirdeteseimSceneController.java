@@ -76,12 +76,6 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
     @FXML
     private TableColumn<Hirdetesek, Hirdetesek> torlesHirdetesekColumn;
     
-    @FXML
-    private Button modositasButton;
-
-    @FXML
-    private Button torlesButton;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -345,15 +339,5 @@ public class FXMLSajatHirdeteseimSceneController implements Initializable{
     @FXML
     private void onKilepesButton() {
         Platform.exit();    
-    }
-
-    @FXML
-    void onModositasButton() {
-
-    }
-
-    @FXML
-    void onTorlesButton() {
-
     }
 }
